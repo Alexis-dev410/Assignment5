@@ -13,6 +13,9 @@ func enter(_msg := {}) -> void:
 	select_next_target()
 
 func update(_delta: float) -> void:
+	if ogre.health <= 0:
+		state_machine.transition_to("Death")
+	
 	if nav_agent.is_target_reached():
 		select_next_target()
 	
@@ -29,4 +32,4 @@ func select_next_target():
 
 func orient():
 	var velocity = ogre.get_velocity()
-	ogre.look_at(ogre.global_position + -velocity.normalized(), Vector3.UP)
+	ogre.look_at(ogre.global_position + velocity.normalized(), Vector3.UP)
