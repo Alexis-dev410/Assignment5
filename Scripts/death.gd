@@ -6,6 +6,7 @@ class_name death
 func enter(_msg := {}) -> void:
 	$"../../AnimationPlayer".play("death")
 	$"../../AnimationPlayer".connect("animation_finished", Callable(self, "_on_animation_finished"))
+	print("dead")
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "death":

@@ -16,7 +16,6 @@ func enter(_msg := {}) -> void:
 	nav_agent.connect("path_changed", Callable(self, "_on_path_changed"))
 
 func _on_path_changed():
-	# Optional: Add logic here if needed when path updates (e.g., debug prints)
 	pass
 
 func update(_delta: float) -> void:
@@ -24,9 +23,10 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Death")
 	
 	if nav_agent.is_target_reached():
-		select_next_target()
-	
-	print("ogre is at: ", ogre.global_position)
+		if index == ogre.movement_points.size() - 1:
+			state_machine.transition_to("Attack")
+		else:
+			select_next_target()
 	
 	orient()
 
@@ -39,8 +39,6 @@ func select_next_target():
 	var next_target = ogre.movement_points[index]
 	nav_agent.set_target_position(next_target.global_position)
 	print("Moving to next target at index: ", index)
-	await nav_agent.path_changed
-	print("Path ready, continuing to target")
 
 func orient():
 	var velocity = ogre.get_velocity()
