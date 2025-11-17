@@ -8,3 +8,8 @@ func enter(_msg := {}) -> void:
 	print("Idle")
 	if ogre.movement_points.size() > 0:
 		state_machine.transition_to("Move")
+
+func update(_delta: float) -> void:
+	if ogre.health <= 0:
+		state_machine.transition_to("Death")
+		return

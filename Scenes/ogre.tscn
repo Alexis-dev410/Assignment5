@@ -1,10 +1,12 @@
-[gd_scene load_steps=371 format=4 uid="uid://c8buenys2830j"]
+[gd_scene load_steps=373 format=4 uid="uid://c8buenys2830j"]
 
 [ext_resource type="Texture2D" uid="uid://d2jfr75glmk6o" path="res://Assets/hill-giant-obor/source/model_0.png" id="1_3blal"]
-[ext_resource type="Script" path="res://Scripts/ogre.gd" id="1_xdnku"]
-[ext_resource type="Script" path="res://Scripts/state_mach.gd" id="2_4j2he"]
-[ext_resource type="Script" path="res://Scripts/idle.gd" id="2_8jiyc"]
-[ext_resource type="Script" path="res://Scripts/move.gd" id="5_t5uq8"]
+[ext_resource type="Script" uid="uid://yhwnsmvgb7uq" path="res://Scripts/ogre.gd" id="1_xdnku"]
+[ext_resource type="Script" uid="uid://b0n8ohf5sf0k" path="res://Scripts/state_mach.gd" id="2_4j2he"]
+[ext_resource type="Script" uid="uid://deea26avtdylt" path="res://Scripts/idle.gd" id="2_8jiyc"]
+[ext_resource type="Script" uid="uid://bbs8cv57ugh36" path="res://Scripts/move.gd" id="5_t5uq8"]
+[ext_resource type="Script" uid="uid://bhdy76otcbalu" path="res://Scripts/death.gd" id="6_7kbme"]
+[ext_resource type="Script" uid="uid://bsltvg0mtjt1m" path="res://Scripts/attack.gd" id="7_uw55x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymmw4"]
 resource_name = "material_0"
@@ -5751,7 +5753,6 @@ height = 1.421051
 [sub_resource type="Animation" id="Animation_xjhb7"]
 resource_name = "attack"
 length = 0.875
-loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -5931,7 +5932,6 @@ tracks/24/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 [sub_resource type="Animation" id="Animation_tbo2q"]
 resource_name = "death"
 length = 0.75
-loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -7441,3 +7441,9 @@ script = ExtResource("2_8jiyc")
 
 [node name="Move" type="Node" parent="StateMach"]
 script = ExtResource("5_t5uq8")
+
+[node name="Death" type="Node" parent="StateMach"]
+script = ExtResource("6_7kbme")
+
+[node name="Attack" type="Node" parent="StateMach"]
+script = ExtResource("7_uw55x")
