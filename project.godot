@@ -14,6 +14,12 @@ config/name="Assignment 5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+TowerPoint=""
+Tower=""
+ProjectileSpawner=""
+
 [input]
 
 ui_select={

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlk2ynifvnnp7"]
+
+[ext_resource type="Script" uid="uid://b2mq25ik6lfka" path="res://Scripts/Tower_Spot.gd" id="1_abyum"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pyn1s"]
+size = Vector3(10.454895, 7.794197, 4.1866455)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1cojt"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
+albedo_color = Color(0, 0.8, 0.08627451, 1)
+
+[node name="TowerSpot" type="Area3D" groups=["TowerPoints"]]
+script = ExtResource("1_abyum")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9669533, 0)
+shape = SubResource("BoxShape3D_pyn1s")
+
+[node name="TowerPoint1" type="MeshInstance3D" parent="." groups=["TowerPoints"]]
+mesh = SubResource("BoxMesh_1cojt")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yq1aw")

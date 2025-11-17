@@ -89,16 +89,22 @@ shadow_mesh = SubResource("ArrayMesh_okfdq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phokp"]
 albedo_texture = ExtResource("2_iyehq")
 
-[node name="Cannon" type="Node3D"]
+[node name="Cannon" type="Node3D" groups=["Tower"]]
 
-[node name="Cannon2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, 0.013473809, 0.26230562, 0.04273647)
+[node name="Spawner" type="MeshInstance3D" parent="." groups=["ProjectileSpawner"]]
+transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0.013473809, 0.35833043, 0.04273647)
 mesh = SubResource("ArrayMesh_g8jrs")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qx3se")
 
 [node name="Stand_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, 0, 0)
+mesh = SubResource("ArrayMesh_qst18")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_phokp")
+
+[node name="Stand_002" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, -0.40925816, -1.109347)
 mesh = SubResource("ArrayMesh_qst18")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_phokp")
