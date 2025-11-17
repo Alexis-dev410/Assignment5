@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var jump_force := 9.0
 @export var mouse_sensitivity := 0.01
 
+@onready var controls_label: Label = $"../TowerCanvas/ControlsLabel"
 @onready var cam_pivot: Node3D = $CameraPivot
 @onready var tower_place_menu: Control = $"../TowerCanvas/TowerPlace"
 @onready var tower_menu: Control = $"../TowerCanvas/TowerMenu"
@@ -72,6 +73,9 @@ func _unhandled_input(event):
 	if mounted_tower != null and Input.is_action_just_pressed("shoot"):
 		print("Left click detected")
 		shoot_from_tower()
+	# show/hide controls
+	if event.is_action_pressed("ui_focus_next"):
+		controls_label.visible = !controls_label.visible
 
 
 # -------------------------------------------------
