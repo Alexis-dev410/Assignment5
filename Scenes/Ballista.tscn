@@ -1,8 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://chx1o80memhoq"]
+[gd_scene load_steps=11 format=4 uid="uid://chx1o80memhoq"]
 
 [ext_resource type="Texture2D" uid="uid://dfal2508y52yu" path="res://Packs/Texture/Stand light.png" id="1_pbi6q"]
-[ext_resource type="Script" uid="uid://3iscp0klojv6" path="res://Scripts/projectile_ballista.gd" id="1_tbi3y"]
-[ext_resource type="PackedScene" uid="uid://dle44tsnuck1p" path="res://Scenes/Ballista_arrow.tscn" id="2_1kbjl"]
 [ext_resource type="Texture2D" uid="uid://68eanesfvnxc" path="res://Packs/Texture/Arbalet light.png" id="2_dgg82"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tvsk"]
@@ -91,18 +89,13 @@ shadow_mesh = SubResource("ArrayMesh_okfdq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgg82"]
 albedo_texture = ExtResource("1_pbi6q")
 
-[node name="Ballista" type="Node3D" groups=["Ballista", "Tower"]]
-script = ExtResource("1_tbi3y")
-projectile_scene = ExtResource("2_1kbjl")
+[node name="Node3D" type="Node3D" groups=["Tower"]]
 
 [node name="Spawner" type="MeshInstance3D" parent="." groups=["ProjectileSpawner"]]
 transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, 0.044030666, 0.74192667)
 mesh = SubResource("ArrayMesh_vaxgr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_s140m")
-
-[node name="Muzzle" type="Node3D" parent="Spawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036132723, 0.08047676)
 
 [node name="Stand_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, -0.8083924, 0)

@@ -7,15 +7,10 @@ extends CharacterBody3D
 @onready var cam_pivot: Node3D = $CameraPivot
 @onready var tower_place_menu: Control = $"../TowerCanvas/TowerPlace"
 @onready var tower_menu: Control = $"../TowerCanvas/TowerMenu"
-@export var ballista_projectile: PackedScene
-@export var cannon_projectile: PackedScene
-@export var shoot_cooldown := 0.5
 
-var can_shoot := true
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_tower_spot: Area3D = null
 var menu_open := false
-
 
 # -------------------------------------------------
 # READY
@@ -67,11 +62,6 @@ func _unhandled_input(event):
 	if mounted_tower != null and Input.is_action_just_pressed("interact"):
 		print("Dismounting via interact")
 		dismount_player()
-		
-	# Shooting when left click
-	if mounted_tower != null and Input.is_action_just_pressed("shoot"):
-		print("Left click detected")
-		shoot_from_tower()
 
 
 # -------------------------------------------------
@@ -350,63 +340,3 @@ func set_mount_state(tower: Node3D) -> void:
 	mounted_tower = tower
 	is_mounted = tower != null
 	print("Mount state updated -> mounted_tower:", mounted_tower, " is_mounted:", is_mounted)
-
-# ------------------------------
-# SHOOTING
-# ------------------------------
-
-func shoot_from_tower() -> void:
-	if not active_control_tower.can_shoot:
-		print("Tower cooldown active")
-		return
-
-	if active_control_tower == null:
-		print("Cannot shoot: no active control tower")
-		return
-
-	var spawner: Node3D = active_control_tower.get_node_or_null("Spawner")
-	if spawner == null:
-		print("Cannot shoot: Spawner node not found")
-		return
-
-	var muzzle: Node3D = spawner.get_node_or_null("Muzzle")
-	if muzzle == null:
-		print("Cannot shoot: Muzzle node not found")
-		return
-
-	var projectile_scene: PackedScene
-	if active_control_tower.is_in_group("Ballista"):
-		projectile_scene = ballista_projectile
-	elif active_control_tower.is_in_group("Cannon"):
-		projectile_scene = cannon_projectile
-	else:
-		print("Tower has no projectile assigned")
-		return
-
-	var projectile: Area3D = projectile_scene.instantiate()
-	print("Projectile instantiated at muzzle:", muzzle.global_transform.origin)
-
-	# Position projectile at muzzle
-	projectile.global_transform.origin = muzzle.global_transform.origin
-
-	# Use muzzle forward for movement
-	var forward_dir: Vector3 = muzzle.global_transform.basis.z
-
-	# Rotate projectile to face forward_dir
-	projectile.look_at(projectile.global_transform.origin + forward_dir, Vector3.UP)
-
-	# Set movement direction in projectile
-	projectile.set_direction(forward_dir)
-
-	# Add projectile to scene
-	get_tree().current_scene.add_child(projectile)
-
-	active_control_tower.can_shoot = false
-	tower_start_cooldown(active_control_tower)
-
-
-func tower_start_cooldown(tower):
-	print("Tower cooldown started")
-	await get_tree().create_timer(tower.fire_rate).timeout
-	tower.can_shoot = true
-	print("Tower cooldown finished")

@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=4 uid="uid://dle44tsnuck1p"]
+[gd_scene load_steps=6 format=4 uid="uid://dle44tsnuck1p"]
 
-[ext_resource type="Script" uid="uid://dqkwye6i1v3jn" path="res://Scripts/Projectile.gd" id="1_eh3fo"]
 [ext_resource type="Texture2D" uid="uid://daugx4rbmvb6" path="res://Packs/Texture/Catapult dark.png" id="1_x3gtf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jddys"]
@@ -43,22 +42,10 @@ shadow_mesh = SubResource("ArrayMesh_3waj7")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh3fo"]
 albedo_texture = ExtResource("1_x3gtf")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3gtf"]
-radius = 0.27734375
-height = 2.939209
-
-[node name="BallistaArrow" type="Area3D"]
-script = ExtResource("1_eh3fo")
-speed = null
+[node name="BallistaArrow" type="Node3D"]
 
 [node name="Ballista_arrow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02313304, 0, 0.00634861)
 mesh = SubResource("ArrayMesh_i7rlc")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_eh3fo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3287354, 0)
-shape = SubResource("CapsuleShape3D_x3gtf")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
