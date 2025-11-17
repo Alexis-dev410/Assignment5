@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b2mq25ik6lfka" path="res://Scripts/Tower_Spot.gd" id="1_abyum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pyn1s"]
-size = Vector3(10.454895, 7.794197, 4.1866455)
+size = Vector3(10.454895, 12.010317, 5.7361145)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1cojt"]
 size = Vector3(5, 1, 5)
@@ -15,7 +15,7 @@ albedo_color = Color(0, 0.8, 0.08627451, 1)
 script = ExtResource("1_abyum")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9669533, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8588934, 0.7606354)
 shape = SubResource("BoxShape3D_pyn1s")
 
 [node name="TowerPoint1" type="MeshInstance3D" parent="." groups=["TowerPoints"]]

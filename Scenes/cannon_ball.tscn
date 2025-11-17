@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://2u3328my44lp"]
+[gd_scene load_steps=7 format=4 uid="uid://2u3328my44lp"]
+
+[ext_resource type="Script" uid="uid://b8118n6qxq3p8" path="res://Scripts/cannonball.gd" id="1_fd25l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0816"]
 resource_name = "Elves_tower_map"
@@ -40,10 +42,19 @@ shadow_mesh = SubResource("ArrayMesh_ckdco")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10215"]
 albedo_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
 
-[node name="Cannon_Ball" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_10215"]
+radius = 0.46972644
+
+[node name="Cannon_Ball" type="Area3D"]
+script = ExtResource("1_fd25l")
 
 [node name="Cannon_ball" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010557175, 0, -0.038994312)
 mesh = SubResource("ArrayMesh_dftd4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_10215")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_10215")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

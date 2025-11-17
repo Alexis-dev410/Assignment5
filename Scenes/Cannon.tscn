@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dhiqjiq0odvy6"]
+[gd_scene load_steps=12 format=4 uid="uid://dhiqjiq0odvy6"]
 
 [ext_resource type="Texture2D" uid="uid://c3h5l7xyfdagj" path="res://Packs/Texture/Connon.png" id="1_3rqpu"]
+[ext_resource type="Script" uid="uid://co1ohnjeaxnft" path="res://Scripts/projectile_cannon.gd" id="1_iyehq"]
 [ext_resource type="Texture2D" uid="uid://txlf8nmdost6" path="res://Packs/Texture/Stand dark.png" id="2_iyehq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew5ff"]
@@ -89,13 +90,17 @@ shadow_mesh = SubResource("ArrayMesh_okfdq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phokp"]
 albedo_texture = ExtResource("2_iyehq")
 
-[node name="Cannon" type="Node3D" groups=["Tower"]]
+[node name="Cannon" type="Node3D" groups=["Cannon", "Tower"]]
+script = ExtResource("1_iyehq")
 
 [node name="Spawner" type="MeshInstance3D" parent="." groups=["ProjectileSpawner"]]
 transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0.013473809, 0.35833043, 0.04273647)
 mesh = SubResource("ArrayMesh_g8jrs")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qx3se")
+
+[node name="Muzzle" type="Node3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.096239805, 0.27147296)
 
 [node name="Stand_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, 0, 0)
