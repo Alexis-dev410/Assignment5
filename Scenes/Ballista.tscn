@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://chx1o80memhoq"]
+[gd_scene load_steps=11 format=4 uid="uid://chx1o80memhoq"]
 
 [ext_resource type="Texture2D" uid="uid://dfal2508y52yu" path="res://Packs/Texture/Stand light.png" id="1_pbi6q"]
-[ext_resource type="Script" uid="uid://bd34e4a8312so" path="res://Scripts/Tower.gd" id="1_s140m"]
 [ext_resource type="Texture2D" uid="uid://68eanesfvnxc" path="res://Packs/Texture/Arbalet light.png" id="2_dgg82"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmiui"]
@@ -90,8 +89,7 @@ shadow_mesh = SubResource("ArrayMesh_cprdg")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s140m"]
 albedo_texture = ExtResource("2_dgg82")
 
-[node name="Node3D" type="Node3D" groups=["Tower"]]
-script = ExtResource("1_s140m")
+[node name="Node3D" type="Node3D"]
 
 [node name="Stand_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, 0, 0)
@@ -104,9 +102,3 @@ transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, 0.8
 mesh = SubResource("ArrayMesh_vaxgr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_s140m")
-
-[node name="Stand_002" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, -8.742278e-08, 0, 8.742278e-08, 2, 0, -0.3728097, -1.2753247)
-mesh = SubResource("ArrayMesh_qst18")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_dgg82")
