@@ -13,4 +13,5 @@ func enter(_msg := {}) -> void:
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
+		get_node("/root/World/GameManager").ogre_reached_church()
 		ogre.queue_free()

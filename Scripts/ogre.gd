@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var movement_points: Array[Node3D]
 @export var health: int = 10
-@export var movement_speed: float = 15.0
+@export var movement_speed: float = 3.0
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
