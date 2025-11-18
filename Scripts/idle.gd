@@ -1,9 +1,12 @@
 extends State
 class_name Idle
 
-@onready var ogre: CharacterBody3D = $"../.."
+@onready var ogre: CharacterBody3D
 
 func enter(_msg := {}) -> void:
+	if ogre == null:
+		ogre = get_parent().get_parent()
+		
 	$"../../AnimationPlayer".play("idle")
 	print("Idle")
 	if ogre.movement_points.size() > 0:

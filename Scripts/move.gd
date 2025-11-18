@@ -1,10 +1,13 @@
 extends State
 class_name Move
 
-@onready var ogre: CharacterBody3D = $"../.."
+@onready var ogre: CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $"../../NavigationAgent3D"
 
 func enter(_msg := {}) -> void:
+	if ogre == null:
+		ogre = get_parent().get_parent()
+		
 	if ogre.movement_points.size() == 0:
 		state_machine.transition_to("Idle")
 	
